@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dataconsumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dataconsumer
+  template:
+    metadata:
+      labels:
+        app: dataconsumer
+    spec:
+      containers:
+      - name: dataconsumer
+        image: dataconsumer-image:latest   # This should match the local image name
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: IfNotPresent     # This prevents pulling the image from Docker Hub

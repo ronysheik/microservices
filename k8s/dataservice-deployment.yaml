@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dataservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dataservice
+  template:
+    metadata:
+      labels:
+        app: dataservice
+    spec:
+      containers:
+      - name: dataservice
+        image: dataservice-image:latest   # This should match the local image name
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: IfNotPresent     # This prevents pulling the image from Docker Hub

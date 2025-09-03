@@ -1,0 +1,4 @@
+dataservice/node_modules/ 
+dataconsumer/node_modules/ 
+*.map
+.vscode/

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 5s
+    scrape_configs:
+      - job_name: 'dataconsumer'
+        metrics_path: /v1/api/service/metrics
+        static_configs:
+          - targets: ['dataconsumer:3000']
+      - job_name: 'dataservice'
+        metrics_path: /v1/api/service/metrics
+        static_configs:
+          - targets: ['dataservice:8080']
